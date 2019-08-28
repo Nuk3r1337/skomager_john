@@ -1,3 +1,15 @@
+<?php
+$shoeSize = ["min" => 33.5, "max" => 57.5];
+
+$options = "<option selected=\"selected\" disabled=\"disabled\" value=\"0\">Vælg skostørrelse</option>";
+
+$i = $shoeSize['min'];
+while($i <= $shoeSize['max']){
+    $options.= "<option value='".$i."'>".str_replace(".", ",", $i)."</option>";
+
+    $i = $i + 0.5;
+}
+?>
 <!DOCTYPE html>
 <html lang="en-uk">
     <head>
@@ -36,23 +48,28 @@
             </div>
         </nav>
         <div class="container" style="margin-top: 20px;">
-            <form method="post">
+            <form method="post" style="margin-left: 25%; margin-right: 25%; padding: 10px;">
                 <div class="form-group">
                     <label for="name">Navn:</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Navn">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Navn" required="required">
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail:</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required="required">
                 </div>
-                <div class="form-group">
-                    <label for="age">Alder:</label>
-                    <input type="text" class="form-control" id="age" name="age" placeholder="Alder">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="age">Alder:</label>
+                        <input type="text" class="form-control" id="age" name="age" placeholder="Alder" required="required">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="shoesize">Skostørrelse:</label>
+                        <select class="form-control" id="shoesize" name="shoesize" required="required">
+                            <?php echo $options; ?>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="shoesize">Skostørrelse:</label>
-                    <input type="text" class="form-control" id="shoesize" name="shoesize" placeholder="Skostørrelse">
-                </div>
+                <input type="submit" class="btn btn-success" name="submit" value="Indsend">
             </form>
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
