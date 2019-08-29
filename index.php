@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "classes/authentication.php";
+require "classes/navbar.php";
 
 $auth = new Authentication();
 
@@ -27,50 +28,9 @@ while($i <= $shoeSize['max']){
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">Skomager</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item navbar-right">
-                        <a class="nav-link" href="/">Hjem<span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
-                <form method="post">
-                    <?php
 
-                    if(isset($_POST["login"])){
-                        if(($output = $auth->login($_POST["username"], $_POST["password"])) === true){
-                            header("location: /admin.php");
-                        } else{
+        <?php echo Navbar::build(); ?>
 
-                            $html = '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
-                            $html .='<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
-                            $html .='<span aria-hidden="true">&times;</span>';
-                            $html .='</button>';
-                            $html .='<strong>Fejl!</strong> '. $output;
-                            $html .='</div>';
-
-                            echo $html;
-                        }
-                    }
-                    ?>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <input class="form-control form-control-sm" type="text" name="username" placeholder="Brugernavn" required="required">
-                        </li>
-                        <li class="nav-item">
-                            <input class="form-control form-control-sm" type="password" name="password" placeholder="Kodeord" required="required">
-                        </li>
-                        <li class="nav-item">
-                            <input type="submit" class="btn btn-primary btn-sm" name="login" value="Log ind">
-                        </li>
-                    </ul>
-                </form>
-            </div>
-        </nav>
         <div class="container" style="margin-top: 20px;">
             <form method="post" style="margin-left: 25%; margin-right: 25%; padding: 10px;">
                 <div class="form-group">
