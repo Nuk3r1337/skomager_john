@@ -25,7 +25,7 @@ class Navbar
 
                     foreach($leftContent as $key => $value){
 
-                        if($page === $value || $value === "/"){
+                        if($page === $value || ( $page === "index.php" && $value === "/")){
 
                             $navbar .= '<li class="nav-item active">';
 

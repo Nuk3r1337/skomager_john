@@ -2,9 +2,30 @@
 session_start();
 require "classes/authentication.php";
 require "classes/navbar.php";
+require "classes/dataView.php";
 
-$auth = new Authentication();
+if(isset($_POST["submit"])) {
+    $dataView = new DataView();
 
+    $dataView->addEntry("johnny", "email", "21", "43");
+}
+
+$msg = "";
+
+if(isset($_POST["login"]) && !isset($_SESSION["LOGIN_STATUS"])){
+    $auth = new Authentication();
+
+    if(($dmsg = $auth->login($_POST["username"], $_POST["password"])) === true){
+        header("Location: /");
+    }else{
+        $msg = '<div class="alert alert-danger alert-dismissible fade show">';
+        $msg .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+        $msg .= '<span aria-hidden="true">&times;</span>';
+        $msg .= '</button>';
+        $msg .= $dmsg;
+        $msg .= '</div>';
+    }
+}
 
 $shoeSize = ["min" => 33.5, "max" => 57.5];
 
@@ -31,6 +52,8 @@ while($i <= $shoeSize['max']){
 
         <?php echo Navbar::build(); ?>
 
+        <?php echo $msg; ?>
+
         <div class="container" style="margin-top: 20px;">
             <form method="post" style="margin-left: 25%; margin-right: 25%; padding: 10px;">
                 <div class="form-group">
@@ -48,7 +71,7 @@ while($i <= $shoeSize['max']){
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="shoesize">Skostørrelse:</label>
-                        <select class="form-control" id="shoesize" name="shoesize" required="required">
+                        <select class="form-control" id="shoesize" name="shoe_size" required="required">
                             <?php echo $options; ?>
                         </select>
                     </div>
