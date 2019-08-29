@@ -1,9 +1,9 @@
 <?php
 session_start();
-require "classes/authentication.php";
 
-$auth = new Authentication();
-
+if (!isset($_SESSION["LOGIN_STATUS"])){
+    header("Location: /index.php");
+}
 
 $shoeSize = ["min" => 33.5, "max" => 57.5];
 
@@ -37,32 +37,20 @@ while($i <= $shoeSize['max']){
                     <li class="nav-item navbar-right">
                         <a class="nav-link" href="/">Hjem<span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item navbar-right">
+                        <a class="nav-link" href="/">Data<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item navbar-right">
+                        <a class="nav-link" href="/">Graf<span class="sr-only">(current)</span></a>
+                    </li>
                 </ul>
                 <form method="post">
-                    <?php
-
-                    if(isset($_POST["login"])){
-                        if(($output = $auth->login($_POST["username"], $_POST["password"])) === true){
-                            header("location: /admin.php");
-                        } else{
-
-                            $html = '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
-                            $html .='<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
-                            $html .='<span aria-hidden="true">&times;</span>';
-                            $html .='</button>';
-                            $html .='<strong>Fejl!</strong> '. $output;
-                            $html .='</div>';
-
-                            echo $html;
-                        }
-                    }
-                    ?>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <input class="form-control form-control-sm" type="text" name="username" placeholder="Brugernavn" required="required">
+                            <input class="form-control form-control-sm" type="text" name="username" placeholder="Brugernavn">
                         </li>
                         <li class="nav-item">
-                            <input class="form-control form-control-sm" type="password" name="password" placeholder="Kodeord" required="required">
+                            <input class="form-control form-control-sm" type="password" name="password" placeholder="Kodeord">
                         </li>
                         <li class="nav-item">
                             <input type="submit" class="btn btn-primary btn-sm" name="login" value="Log ind">
