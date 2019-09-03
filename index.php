@@ -4,13 +4,15 @@ require "classes/authentication.php";
 require "classes/navbar.php";
 require "classes/dataView.php";
 
+$msg = "";
+
 if(isset($_POST["submit"])) {
     $dataView = new DataView();
 
-    $dataView->addEntry("johnny", "email", "21", "43");
+    if(($result = $dataView->addEntry()) !== true) {
+        $msg = $result;
+    }
 }
-
-$msg = "";
 
 if(isset($_POST["login"]) && !isset($_SESSION["LOGIN_STATUS"])){
     $auth = new Authentication();
@@ -57,20 +59,20 @@ while($i <= $shoeSize['max']){
         <div class="container" style="margin-top: 20px;">
             <form method="post" style="margin-left: 25%; margin-right: 25%; padding: 10px;">
                 <div class="form-group">
-                    <label for="name">Navn:</label>
+                    <label for="name">Navn*</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Navn" required="required">
                 </div>
                 <div class="form-group">
-                    <label for="email">E-mail:</label>
+                    <label for="email">E-mail*</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" required="required">
                 </div>
                 <div class="row">
                     <div class="form-group col-sm-6">
-                        <label for="age">Alder:</label>
+                        <label for="age">Alder*</label>
                         <input type="text" class="form-control" id="age" name="age" placeholder="Alder" required="required">
                     </div>
                     <div class="form-group col-sm-6">
-                        <label for="shoesize">Skostørrelse:</label>
+                        <label for="shoesize">Skostørrelse*</label>
                         <select class="form-control" id="shoesize" name="shoe_size" required="required">
                             <?php echo $options; ?>
                         </select>
