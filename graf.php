@@ -1,12 +1,13 @@
 <?php
 session_start();
-require "classes/authentication.php";
-require "classes/navbar.php";
-require "classes/dataView.php";
-require "classes/dataReceive.php";
+
+require_once $_SERVER["DOCUMENT_ROOT"] ."/skomager_john/classes/authentication.php";
+require_once $_SERVER["DOCUMENT_ROOT"] ."/skomager_john/classes/navbar.php";
+require_once $_SERVER["DOCUMENT_ROOT"] ."/skomager_john/classes/dataView.php";
+require_once $_SERVER["DOCUMENT_ROOT"] ."/skomager_john/classes/dataReceive.php";
 
 if (!isset($_SESSION["LOGIN_STATUS"])){
-    header("Location: /index.php");
+    header("Location: /skomager_john/index.php");
 }
 
 ?>
@@ -26,7 +27,7 @@ if (!isset($_SESSION["LOGIN_STATUS"])){
         <div class="container" style="margin-top: 20px;">
 
             <div id="top_x_div" style="width: 800px; height: 600px;"></div>
-            
+
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require "classes/dataView.php";
-require "classes/navbar.php";
+require_once $_SERVER["DOCUMENT_ROOT"] ."/skomager_john/classes/dataView.php";
+require_once $_SERVER["DOCUMENT_ROOT"] ."/skomager_john/classes/navbar.php";
 
 $dataView = new DataView();
 

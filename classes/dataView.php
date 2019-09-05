@@ -1,5 +1,5 @@
 <?php
-require_once "classes/database.php";
+require_once $_SERVER["DOCUMENT_ROOT"] ."/skomager_john/classes/database.php";
 
 class DataView
 {

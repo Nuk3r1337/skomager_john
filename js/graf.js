@@ -10,7 +10,7 @@ xhttp.onreadystatechange = function () {
     }
 };
 
-xhttp.open("GET","/ajax/graphData.php", true);
+xhttp.open("GET","/skomager_john/ajax/graphData.php", true);
 xhttp.send();
 
 function drawStuff(dataValues) {

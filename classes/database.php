@@ -19,7 +19,7 @@ class Database
     public function __construct()
     {
 
-        $config = require $_SERVER["DOCUMENT_ROOT"]."/config/database.php";
+        $config = require $_SERVER["DOCUMENT_ROOT"]."/skomager_john/config/database.php";
 
         try {
             $this->connection = new PDO("mysql:dbname={$config["DATABASE"]};charset={$config["CHARSET"]};host={$config["HOSTNAME"]}", $config["USERNAME"], $config["PASSWORD"]);

@@ -1,5 +1,5 @@
 <?php
-require $_SERVER["DOCUMENT_ROOT"]."/classes/database.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/skomager_john/classes/database.php";
 
 header("Content-type: application/json");
 

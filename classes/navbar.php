@@ -8,7 +8,7 @@ class Navbar
 
         $page = substr($_SERVER["PHP_SELF"], 1);
 
-        $leftContent = ["Hjem"=>"/"];
+        $leftContent = ["Hjem"=>"index.php"];
 
         if($loginStatus){
 
@@ -16,7 +16,7 @@ class Navbar
         }
 
         $navbar = '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">';
-            $navbar .= '<a class="navbar-brand" href="/">Skomager</a>';
+            $navbar .= '<a class="navbar-brand" href="/skomager_john/">Skomager</a>';
             $navbar .= '<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
                 $navbar .= '<span class="navbar-toggler-icon"></span>';
             $navbar .= '</button>';
@@ -34,7 +34,7 @@ class Navbar
                             $navbar .= '<li class="nav-item">';
                         }
 
-                            $navbar .= '<a class="nav-link" href="'. $value .'">'. $key .'</a>';
+                            $navbar .= '<a class="nav-link" href="/skomager_john/'. $value .'">'. $key .'</a>';
                         $navbar .= '</li>';
                     }
 

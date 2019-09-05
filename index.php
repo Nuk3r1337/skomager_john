@@ -1,8 +1,15 @@
 <?php
 session_start();
-require "classes/authentication.php";
-require "classes/navbar.php";
-require "classes/dataView.php";
+
+ini_set("display_errors",1);
+error_reporting(E_ALL);
+
+require_once $_SERVER["DOCUMENT_ROOT"] ."/skomager_john/classes/authentication.php";
+require_once $_SERVER["DOCUMENT_ROOT"] ."/skomager_john/classes/navbar.php";
+require_once $_SERVER["DOCUMENT_ROOT"] ."/skomager_john/classes/dataView.php";
+
+
+
 
 $msg = "";
 
@@ -18,7 +25,7 @@ if(isset($_POST["login"]) && !isset($_SESSION["LOGIN_STATUS"])){
     $auth = new Authentication();
 
     if(($dmsg = $auth->login($_POST["username"], $_POST["password"])) === true){
-        header("Location: /");
+        header("Location: /skomager_john/");
     }else{
         $msg = '<div class="alert alert-danger alert-dismissible fade show">';
         $msg .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
