@@ -1,5 +1,5 @@
 <?php
-//require "classes/database.php";
+require_once "classes/database.php";
 
 class DataView
 {

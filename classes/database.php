@@ -19,8 +19,7 @@ class Database
     public function __construct()
     {
 
-        $config = require "config/database.php";
-
+        $config = require $_SERVER["DOCUMENT_ROOT"]."/config/database.php";
 
         try {
             $this->connection = new PDO("mysql:dbname={$config["DATABASE"]};charset={$config["CHARSET"]};host={$config["HOSTNAME"]}", $config["USERNAME"], $config["PASSWORD"]);

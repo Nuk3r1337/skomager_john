@@ -6,9 +6,6 @@ require "classes/navbar.php";
 
 $dataView = new DataView();
 
-$dataView->addEntry("johnny", "email", "21", "43");
-die;
-
 ?>
 <!DOCTYPE html>
 <html lang="en-uk">
